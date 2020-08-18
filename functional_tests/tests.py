@@ -4,9 +4,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 from selenium.common.exceptions import WebDriverException
-
-
-MAX_WAIT = 10
+from selenium.common.exceptions import ElementNotInteractableException
 
 class NewVisitorTest(LiveServerTestCase):
 
@@ -17,18 +15,11 @@ class NewVisitorTest(LiveServerTestCase):
 		self.browser.quit()
 
 	def wait_for_row_in_list_table(self, row_text):
-		start_time = time.time()
-		while True:
-			try:
-				table = self.browser.find_element_by_id('id_list_table')
-				rows = table.find_elements_by_tag_name('tr')
-				self.assertIn(row_text, [row.text for row in rows])
-				return
-			except (AssertionError, WebDriverException) as e:
-				if time.time() - start_time > MAX_WAIT:
-					raise e
-				time.sleep(0.5)
-
+		table = self.browser.find_element_by_id('id_list_table')
+			
+		rows = table.find_elements_by_tag_name('tr')
+		self.assertIn(row_text, [row.text for row in rows])
+		return
 
 	def test_layout_and_styling(self):
 		self.browser.get(self.live_server_url)
@@ -44,7 +35,7 @@ class NewVisitorTest(LiveServerTestCase):
 		inputbox.send_keys('testing')
 		inputbox.send_keys(Keys.ENTER)
 		self.wait_for_row_in_list_table('1: testing')
-		inputbox = self.browser.find_element_by_id('id_new_item')
+		inputbox = self.browser.find_elements_by_css_selector('id_new_item')
 		self.assertAlmostEqual(
 			inputbox.location['x'] + inputbox.size['width'] /2,
 			512,
@@ -66,13 +57,9 @@ class NewVisitorTest(LiveServerTestCase):
 		#She is invited to enter a to-do item immediately
 
 		inputbox = self.browser.find_element_by_id('id_new_item')
-		self.assertEqual(
-			inputbox.get_attribute('placeholder'),
-			'Enter a to-do item'
-		)	
 
 		#She types 'Buy peacock feathers' into a textbox
-		
+
 		inputbox.send_keys('Buy peacock feathers')
 
 		inputbox.send_keys(Keys.ENTER)
@@ -106,6 +93,7 @@ class NewVisitorTest(LiveServerTestCase):
 		self.browser.get(self.live_server_url)
 		
 		inputbox = self.browser.find_element_by_id('id_new_item')
+
 		inputbox.send_keys('Buy peacock feathers')
 		inputbox.send_keys(Keys.ENTER)
 		self.wait_for_row_in_list_table('1: Buy peacock feathers')
