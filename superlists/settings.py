@@ -23,13 +23,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-=frr7%&fotj3o70!d-&tahe+f0i$n7!50n)d09780zn*aryx('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = [
-    'www.thetodolistsite.com',
-    'localhost',
-]
+if 'DJANGO_DEBUG_FALSE' in os.environ:
+	DEBUG = False
+	SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+	ALLOWED_HOSTS = ['www.thetodolistsite.com', 'localhost']
 
+else:
+	DEBUG = True
+	SECRET_KEY = 'insecure_key_for_dev'
+	ALLOWED_HOSTS = []
 
 # Application definition
 
