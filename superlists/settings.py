@@ -25,7 +25,10 @@ SECRET_KEY = '-=frr7%&fotj3o70!d-&tahe+f0i$n7!50n)d09780zn*aryx('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'www.thetodolistsite.com',
+    'localhost',
+]
 
 
 # Application definition

@@ -7259,6 +7259,9 @@ button.bg-dark:focus {
 .align-items-center {
   -ms-flex-align: center !important;
   align-items: center !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .align-items-baseline {
