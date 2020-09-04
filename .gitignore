@@ -5,3 +5,5 @@ __pycache__
 *.pyc
 /static
 .env
+secrets
+secrets/__init__.py secrets/__pycache__ secrets/secrets.py
