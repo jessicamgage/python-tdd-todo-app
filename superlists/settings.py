@@ -121,10 +121,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 email_password_finder = ReturnEmailPassword()
 
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.protonmail.com'
+EMAIL_PORT = 1025
 EMAIL_HOST_USER = 'testgoatbookemail@protonmail.com'
 EMAIL_HOST_PASSWORD = email_password_finder.return_email_password()
-EMAIL_PORT = 1025
-EMAIL_USE_TLS = True
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

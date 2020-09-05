@@ -1,9 +1,9 @@
 import uuid
 import sys
 from django.shortcuts import redirect, render
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.contrib.auth import authenticate
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, logout as auth_logout
 
 from accounts.models import Token
 
@@ -13,13 +13,15 @@ def send_login_email(request):
 	Token.objects.create(email=email, uid=uid)
 	print('saving uid', uid, 'for email', email, file=sys.stderr)
 	url = request.build_absolute_uri(f'/accounts/login?uid={uid}')
-	send_mail(
+	
+	email = EmailMessage(
 		'Your login link for Superlists',
-		f'Use this link to log in:\n\n{url}',
-		'noreply@superlists',
-		[email],
+                f'Use this link to log in:\n\n{url}',
+                'noreply@superlists',
+                [email],
 	)
 
+	email.send()
 	return render(request, 'login_email_sent.html')
 
 def login(request):
