@@ -4,10 +4,13 @@ from django.shortcuts import redirect, render
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
+from django.views.decorators.csrf import csrf_exempt
 
 from accounts.models import Token
 
+@csrf_exempt
 def send_login_email(request):
+	print(request.POST)
 	email = request.POST['email']
 	uid = str(uuid.uuid4())
 	Token.objects.create(email=email, uid=uid)

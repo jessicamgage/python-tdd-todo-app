@@ -1,5 +1,5 @@
 import os
-from secrets.secrets import ReturnSecretKey, ReturnEmailPassword
+from secrets.secrets import ReturnSecretKey
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -98,6 +98,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGGING = {
+	'version': 1,
+	'disable_existing_loggers': False,
+	'handlers': {
+		'console': {
+			'level': 'DEBUG',
+			'class': 'logging.StreamHandler',	
+		},
+	},
+	'loggers': {
+		'django': {
+			'handlers': ['console'],
+		},
+	},
+	'root': {'level': 'INFO'},
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -119,12 +135,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-email_password_finder = ReturnEmailPassword()
-
-EMAIL_HOST = 'smtp.protonmail.com'
-EMAIL_HOST_USER = 'testgoatbookemail@protonmail.com'
-EMAIL_HOST_PASSWORD = email_password_finder.return_email_password()
-EMAIL_PORT = 1025
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'onlyforbook61@gmail.com'
+EMAIL_HOST_PASSWORD = 'loopwake'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

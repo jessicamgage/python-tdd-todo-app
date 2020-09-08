@@ -17,5 +17,5 @@ class PasswordlessAuthenticationBackend(object):
 			print('new user', file=sys.stderr)
 			return ListUser.objects.create(email=token.email)
 	
-	def get_user(self):
+	def get_user(self, email):
 		return ListUser.objects.get(email=email)
