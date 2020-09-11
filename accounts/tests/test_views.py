@@ -35,7 +35,7 @@ class SendLoginEmailViewTest(TestCase):
 		})
 
 		token = Token.objects.first()
-		expected_url = f'http://localhost:8000/accounts/login?token={token.uid}'
+		expected_url = f'http://testserver/accounts/login?token={token.uid}'
 
 		(subject, body, from_email, to_list), kwargs = mock_send_mail.call_args
 		self.assertIn(expected_url, body)
