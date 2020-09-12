@@ -27,7 +27,7 @@ class AuthenticationTest(TestCase):
 		self.assertEqual(user, existing_user)		
 	def test_get_user_by_email(self):
 		User.objects.create(email='notreal@gmail.com')
-		desired_user = User.objects.create(email='onlyforemail61@gmail.com')
+		desired_user = User.objects.create(email='onlyforbook61@gmail.com')
 		found_user = PasswordlessAuthenticationBackend().get_user(
 			'onlyforbook61@gmail.com'
 		)
