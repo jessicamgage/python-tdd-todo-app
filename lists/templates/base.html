@@ -38,7 +38,7 @@
 						{% for message in messages %}
 							{% if message.level_tag == 'success' %}
 								<div class="aert alert-success">{{ message }} </div>
-							{$ else %}
+							{% else %}
 								<div class="alert alert-warning">{{ message }}</div>
 							{% endif %}
 						{% endfor %}
