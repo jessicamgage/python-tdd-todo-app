@@ -14,8 +14,7 @@ class LayoutAndStylingTest(FunctionalTest):
 			delta=1000
 		)
 
-		self.get_item_input_box().send_keys('testing')
-		self.get_item_input_box().send_keys(Keys.ENTER)
-		self.wait_for_row_in_list_table('1: testing')
+		
+		self.add_list_item('testing')
 		inputbox = self.browser.find_elements_by_css_selector('id_text')
 

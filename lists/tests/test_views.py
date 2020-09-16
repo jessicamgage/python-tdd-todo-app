@@ -73,7 +73,6 @@ class ListViewTest(TestCase):
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'home.html')
 		expected_error = escape("You can't have an empty list item")
-		print(response.content.decode())
 		self.assertContains(response, expected_error)
 
 	def test_invalid_items_arent_saved(self):
@@ -137,3 +136,9 @@ class NewListTest(TestCase):
 		response = self.client.get(f'/lists/{list_.id}/')
 		self.assertIsInstance(response.context['form'], ExistingListItemForm)
 		self.assertContains(response, 'name="text"')
+
+
+class MyListsTest(TestCase):
+	def test_my_lists_url_renders_to_my_lists_template(self):
+		response = self.client.get('/lists/users/a@b.com/')
+		self.assertTemplateUsed(response, 'my_lists.html')

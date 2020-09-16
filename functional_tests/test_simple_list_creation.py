@@ -18,29 +18,18 @@ class NewVisitorTest(FunctionalTest):
 
 		#She is invited to enter a to-do item immediately
 
-		inputbox = self.get_item_input_box()
 
 		#She types 'Buy peacock feathers' into a textbox
-
-		self.get_item_input_box().send_keys('Buy peacock feathers')
-
-		self.get_item_input_box().send_keys(Keys.ENTER)
-		self.wait_for_row_in_list_table('1: Buy peacock feathers')
+		self.add_list_item('Buy peacock feathers')
 
 
 		#When she hits enter, the page updates, and now the page lists 1: Buy peacock feathers as an item in the to-do list
 
 		#There is still a text box inviting her to add another item. She enters 'Use peacock feathers to make a fly'
 
-		inputbox = self.get_item_input_box()
-		self.get_item_input_box().send_keys('Use peacock feathers to make a fly')
-		self.get_item_input_box().send_keys(Keys.ENTER)
+		self.add_list_item('Use peacock feathers to make a fly')
 
 		#The page updates again and shows both items
-
-		self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
-		self.wait_for_row_in_list_table('1: Buy peacock feathers')
-
 		#She wonders iwhether the site will remember her list. Then she notices that the site has generated a unique URL for her.
 
 		# She visits that URL and her to-do list is still there
@@ -51,11 +40,7 @@ class NewVisitorTest(FunctionalTest):
 		#Edith starts a new to-do-list
 		self.browser.get(self.live_server_url)
 		
-		inputbox = self.get_item_input_box()
-
-		self.get_item_input_box().send_keys('Buy peacock feathers')
-		self.get_item_input_box().send_keys(Keys.ENTER)
-		self.wait_for_row_in_list_table('1: Buy peacock feathers')
+		self.add_list_item('Buy peacock feathers')
 
 		#She notices that her list has a unique URL
 
@@ -80,10 +65,7 @@ class NewVisitorTest(FunctionalTest):
 		#Francis starts a new list by entering a new item. He is less 
 #interesting than Edith...
 
-		inputbox = self.get_item_input_box()
-		self.get_item_input_box().send_keys('Buy almond milk')
-		self.get_item_input_box().send_keys(Keys.ENTER)
-		self.wait_for_row_in_list_table('1: Buy almond milk')
+		self.add_list_item('Buy almond milk')
 
 		#Francis gets his own unique URL
 
