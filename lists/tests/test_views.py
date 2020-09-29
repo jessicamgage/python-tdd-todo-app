@@ -6,7 +6,7 @@ from django.utils.html import escape
 from lists.forms import (EMPTY_ITEM_ERROR, DUPLICATE_ITEM_ERROR, ExistingListItemForm, ItemForm)
 from django.contrib.auth import get_user_model
 from unittest.mock import patch, Mock
-from unittest import TestCase
+from unittest import TestCase, skip
 from django.test import TestCase as DjangoTestCase
 
 from lists.views import home_page
@@ -130,3 +130,15 @@ class MyListsTest(DjangoTestCase):
 		correct_user = User.objects.create(email='right@owner.com')
 		response = self.client.get('/lists/users/right@owner.com/')
 		self.assertEqual(response.context['owner'], correct_user)
+
+class ShareMyListsTests(DjangoTestCase):
+	def test_share_button_shares_with_sharer(self):
+		list_ = List.objects.create()
+		sharee = User.objects.create(email='a@b.com')
+
+		self.client.post(
+			f'/lists/{list_.id}/share',
+			{'sharee': 'a@b.com'}
+		)
+
+		self.assertIn(sharee, list_.shared_with.all())
