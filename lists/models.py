@@ -1,3 +1,6 @@
+"""
+This file contains models that Django uses to make one's own fields within a database table, such as a username or password.
+"""
 from django.db import models
 from django.conf import settings
 from django.core.urlresolvers import reverse
