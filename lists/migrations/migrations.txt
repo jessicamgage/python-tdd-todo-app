@@ -1,0 +1,2 @@
+Migrations is a Django feature that shows one what models have been sent to the SQLite3 database -- when a new model is created,
+it is sent to SQLite via the usage of the command 'manage.py makemigrations' when a new model is made, or 'manage.py migrate' when a model is edited.
