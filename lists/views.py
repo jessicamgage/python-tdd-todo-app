@@ -1,3 +1,7 @@
+"""
+This file wires up Django's views, which are used in conjunction with urls.py files to wire up URLs and routes.
+"""
+
 from django.shortcuts import render, redirect
 from django.core.exceptions import ValidationError
 from lists.models import Item, List
