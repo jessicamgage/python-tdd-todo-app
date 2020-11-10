@@ -1,3 +1,6 @@
+"""
+The manage.py file is used via shell commands to run tests as well as run code.
+"""
 #!/usr/bin/env python
 import os
 import sys
