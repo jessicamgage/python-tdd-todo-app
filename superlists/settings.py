@@ -1,3 +1,5 @@
+//The settings.py file is a file used by Django to access various environmental variables, as well as wire up middleware.
+
 import os
 from secrets.secrets import ReturnSecretKey
 
@@ -135,9 +137,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+email_password_finder = ReturnEmailPassword()
+EMAIL_PASSWORD = email_password_finder.return_email_password()
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'onlyforbook61@gmail.com'
-EMAIL_HOST_PASSWORD = 'loopwake'
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
