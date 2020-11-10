@@ -1,3 +1,6 @@
+"""
+This file contains forms that are used by Django, as well as customizable error messages that an inproper use of the form may trigger.
+"""
 from django import forms
 from django.core.exceptions import ValidationError
 from lists.models import Item, List
