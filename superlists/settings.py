@@ -1,4 +1,6 @@
-//The settings.py file is a file used by Django to access various environmental variables, as well as wire up middleware.
+"""
+The settings.py file is a file used by Django to access various environmental variables, as well as wire up middleware.
+"""
 
 import os
 from secrets.secrets import ReturnSecretKey
