@@ -1,5 +1,8 @@
 """
-The manage.py file is used via shell commands to run tests as well as run code.
+The manage.py file is used via shell commands to run tests as well as run code. 
+Uses include 'python manage.py test {folder name}' to test any file within the folder that begins with 'tests',
+'python manage.py makemigrations' to update the existing model database, and more.
+Look up the Django docs to learn more.
 """
 #!/usr/bin/env python
 import os
