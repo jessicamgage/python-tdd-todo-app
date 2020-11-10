@@ -1,3 +1,7 @@
+"""
+This page, unlike superlists/urls.py, is used only for URLs that proceed the lists route; these provide links to URLs for pages that can be accessed specific to links.
+"""
+
 from django.conf.urls import url
 from lists import views
 
