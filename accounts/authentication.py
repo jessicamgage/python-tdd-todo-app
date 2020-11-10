@@ -1,3 +1,6 @@
+"""
+The purpose of an authentication.py file is to make sure that a user who sends a certain request has the credentials to receive the response they requested.
+"""
 from accounts.models import User, Token
 
 class PasswordlessAuthenticationBackend(object):
