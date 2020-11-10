@@ -1,3 +1,7 @@
+"""
+This views.py file, unlike the similar one, superlists/views.py, is for URLs that proceed the accounts route.
+Anything that invovles the usage of an account, such as the sending of a login email, is done via these views.
+"""
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.contrib import auth, messages
