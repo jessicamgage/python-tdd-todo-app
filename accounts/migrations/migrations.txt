@@ -1,0 +1,2 @@
+The purpose of the migrations file is to hold the migrations that have been done to the Django database.
+Migrations are controlled via the usage of the commands 'python manage.py makemigrations' to add or delete a new model, and 'python manage.py migrate' to update one.
